@@ -1,108 +1,79 @@
-## MongoDB commands for Databases
+### MongoDB commands for Databases
 
+1. **View all databases**
+   - Command: `show dbs`
+   - Description: This command displays a list of all the databases available in your MongoDB server.
 
-### View all databases
-> show dbs
+2. **Create a new or switch database**
+   - Command: `use dbName`
+   - Description: You can use this command to create a new database with the specified name or switch to an existing database with the given name.
 
-### Create a new or switch databse
-> use dbName
+3. **View current database**
+   - Command: `db`
+   - Description: This command shows you the name of the currently selected database.
 
-### View current databases
-> db
+4. **Delete database**
+   - Command: `db.dropDatabase()`
+   - Description: Use this command to delete the currently selected database along with all its collections and data.
 
-### Delete databases
-> db.dropDatabase()
+### MongoDB commands for Collections
 
-## MongoDB commands for Collections
+5. **Show Collections**
+   - Command: `show collections`
+   - Description: This command lists all the collections within the currently selected database.
 
-### Show Collections
-> show collections
+6. **Create a collection**
+   - Command: `db.createCollection(collectionName)`
+   - Description: You can use this command to create a new collection with the specified `collectionName` within the current database.
 
-### Create a collection 
->  db.createCollection **(collection name)**
+7. **Delete Collection**
+   - Command: `db.collectionName.drop()`
+   - Description: This command deletes the collection with the specified `collectionName` from the current database.
 
-### Delete Collection
-> db.**collectionName**. drop()
+### MongoDB commands for Rows (Documents)
 
-### MongoDB commands for Rows
+8. **Insert One Row**
+   - Command: `db.collectionName.insert({})`
+   - Description: Use this command to insert a single document (row) into the specified collection with empty data. You can replace the `{}` with the data you want to insert.
 
-### Insert One Rows:-
->db. **collectionName** .insert({})
+9. **Insert Many Rows**
+   - Command: `db.collectionName.insertMany([{}])`
+   - Description: This command allows you to insert multiple documents (rows) into the specified collection with the provided data. You can insert an array of objects containing the data.
 
-***Example***
-```js
-db.student.insert({
-    'name': 'ABC',
-    'lang': 'English',
+10. **Show all Rows in Collection**
+    - Command: `db.collectionName.find()`
+    - Description: This command retrieves and displays all the documents (rows) within the specified collection.
 
-})
-```
+11. **Find the first row matching the object**
+    - Command: `db.collectionName.findOne({key: 'value'})`
+    - Description: It retrieves and returns the first document in the collection that matches the specified criteria (`key: 'value'`).
 
-### Insert  Many Rows:-
->db. **collectionName** .insertMany ( [ { } ] )
+12. **Show all Rows in Collection (Prettified)**
+    - Command: `db.collectionName.find().pretty()`
+    - Description: This command displays all the documents in the collection in a more human-readable, formatted manner.
 
-***Example***
-```js
-db.students.insertMany([{
-    'name': 'ABC',
-    'lang': 'JavaScript',
-     }, 
-    
-    {'name': 'XYZ',
-    'lang': 'HTML',
-     }, 
-     4
-     {'name': 'PQR',
-     'lang': 'DSA',
-     }
-     ])
-```
-### Show all Rows in Collection:-
->db. **collectionName**.find()
+13. **Search in MongoDB Database**
+    - Command: `db.collectionName.find({key: 'value'})`
+    - Description: Use this command to search for documents in the collection that match the specified criteria (`key: 'value'`).
 
- ## Find the first row matching the object:-
- >db.**collection name**.findOne({key: 'value'})
+14. **Limit the number of rows in output**
+    - Command: `db.collectionName.find().limit(number)`
+    - Description: It limits the number of documents returned in the output to the specified `number`.
 
+15. **Count the number of rows in the output**
+    - Command: `db.collectionName.find().count()`
+    - Description: This command counts and returns the total number of documents in the collection that match the query criteria.
 
-### Show all Rows in Collection (     Prettified):-
->db. **collectionName**.find().preety()
+16. **Update a document**
+    - Command: `db.collectionName.update({key: 'value'}, {$set: {key: 'updated value'}})`
+    - Description: Use this command to update a document in the collection that matches the specified criteria by setting a new value for a specific key.
 
-## Search in MongoDB Database:-
-> db.collectionName.find({key: 'value'})
+17. **MongoDB Increment Operator**
+    - Description: The provided JavaScript code demonstrates how to use the MongoDB Increment Operator to increment the value of a key within a document.
 
-***Example***
+18. **MongoDB Rename Operator**
+    - Description: The provided JavaScript code demonstrates how to use the MongoDB Rename Operator to rename a key within a document.
 
-> db.students.find(`{lang: 'DSA'}`)
-
-## Limit the number of rows in output:-
->db.collectionName.find().limit(number)
-
-## Count the number of rows in the output:-
->db.collectionName.find().count()
-
- ## Update a document:-
->db.collectionName.update({key: 'value'}, {$set: {key: 'updated value'}}) 
-
-## MongoDB Increment Operator:-
-
-```js
-db.comments.update({key: 'value'},
-{$inc:{
-    key : 'value'
-}})
-```
-
-## MongoDB Rename Operator:-
-
-```js
-db.comments.update({key: 'value'},
-{$rename:{
-    key : 'value'
-}})
-```
-
-## Delete Row:-
-```js
-db.comments.remove({key: 'value'})
-```
-
+19. **Delete Row**
+    - Command: `db.collectionName.remove({key: 'value'})`
+    - Description: This command allows you to delete documents in the collection that match the specified criteria (`key: 'value'`).
